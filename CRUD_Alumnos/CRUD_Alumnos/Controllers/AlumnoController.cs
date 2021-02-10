@@ -12,11 +12,21 @@ namespace CRUD_Alumnos.Controllers
         // GET: Alumno
         public ActionResult Index()
         {
-            AlumnosContext db = new AlumnosContext();
+            try
+            {
+                using (var db = new AlumnosContext())
+                {
+                    //List<Alumno> lista = db.Alumno.Where(a => a.Edad > 18).ToList();
+                    
+                    return View(db.Alumno.ToList());
+                }
+            }
+            catch (Exception)
+            {
 
-            //List<Alumno> lista = db.Alumno.Where(a => a.Edad > 18).ToList();
-
-            return View(db.Alumno.ToList());
+                throw;
+            }
+            
         }
         public ActionResult Agregar()
         {
@@ -46,8 +56,76 @@ namespace CRUD_Alumnos.Controllers
                 return View();
             }
             
+        }
+        //Editar
+        public ActionResult Editar(int id)
+        {
+            try
+            {
+                using (var db = new AlumnosContext())
+                {
+                    //Alumno al = db.Alumno.Where(a => a.id == id).FirstOrDefault();
+                    Alumno alu = db.Alumno.Find(id);
+                    return View(alu);
+                }
+            }
+            catch (Exception ex)
+            {
 
+                throw;
+            }
             
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Editar(Alumno a)
+        {
+            if (!ModelState.IsValid)
+                return View();
+            try
+            {
+                using (var db = new AlumnosContext())
+                {
+                    Alumno al = db.Alumno.Find(a.id);
+                    al.Nombre = a.Nombre;
+                    al.Apellidos = a.Apellidos;
+                    al.Edad = a.Edad;
+                    al.Sexo = a.Sexo;
+
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+            
+        }
+        //Detalles
+        public ActionResult Detallesalumno(int id)
+        {
+            using (var db = new AlumnosContext())
+            {
+                Alumno alu = db.Alumno.Find(id);
+                return View(alu);
+            }
+
+        }
+        //Eliminar
+        public ActionResult EliminarAlumno(int id)
+        {
+            using (var db = new AlumnosContext())
+            {
+                Alumno alu = db.Alumno.Find(id);
+                db.Alumno.Remove(alu);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+
+            }
         }
     }
 }
