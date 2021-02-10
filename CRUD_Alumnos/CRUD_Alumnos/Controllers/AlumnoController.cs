@@ -14,13 +14,40 @@ namespace CRUD_Alumnos.Controllers
         {
             AlumnosContext db = new AlumnosContext();
 
-            List<Alumno> lista = db.Alumno.Where(a => a.Edad > 18).ToList();
+            //List<Alumno> lista = db.Alumno.Where(a => a.Edad > 18).ToList();
 
             return View(db.Alumno.ToList());
         }
         public ActionResult Agregar()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Agregar(Alumno a)
+        {
+            if (!ModelState.IsValid)
+                return View();
+            try
+            {
+                using (var db = new AlumnosContext())
+                {
+                    a.FechaRegistr = DateTime.Now;
+
+                    db.Alumno.Add(a);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Error al registrar Alumno - " + ex.Message);
+                return View();
+            }
+            
+
+            
         }
     }
 }

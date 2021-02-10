@@ -19,6 +19,6 @@ namespace CRUD_Alumnos.Models
         public string Apellidos { get; set; }
         public int Edad { get; set; }
         public string Sexo { get; set; }
-        public Nullable<System.DateTime> FechaRegistr { get; set; }
+        public System.DateTime FechaRegistr { get; set; }
     }
 }
