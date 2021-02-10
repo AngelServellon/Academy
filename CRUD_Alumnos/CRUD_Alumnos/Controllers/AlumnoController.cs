@@ -57,6 +57,17 @@ namespace CRUD_Alumnos.Controllers
             }
             
         }
+        public ActionResult Agregar2()
+        {
+            return View();
+        }
+        public ActionResult ListaCiudades()
+        {
+            using(var db = new AlumnosContext())
+            {
+                return PartialView(db.Ciudad.ToList());
+            }
+        }
         //Editar
         public ActionResult Editar(int id)
         {
@@ -127,5 +138,13 @@ namespace CRUD_Alumnos.Controllers
 
             }
         }
+        public static string NombreCiudad(int CodCiudad)
+        {
+            using (var db = new AlumnosContext())
+            {
+                return db.Ciudad.Find(CodCiudad).Nombre;
+            }
+        }
+
     }
 }

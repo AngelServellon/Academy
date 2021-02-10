@@ -16,10 +16,13 @@
             Nombre Completo
         </th>
         <th>
-            Edad    
+            Edad
         </th>
         <th>
             Sexo
+        </th>
+        <th>
+            Ciudad
         </th>
         <th>
             Fecha Alta
@@ -47,6 +50,9 @@
                 }
             }
 
+        </td>
+        <td>
+            @CRUD_Alumnos.Controllers.AlumnoController.NombreCiudad(item.CodCiudad)
         </td>
         <td>
             @item.FechaRegistr.ToShortDateString()
