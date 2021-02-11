@@ -1,6 +1,7 @@
 ﻿using CRUD_Alumnos.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,11 +15,32 @@ namespace CRUD_Alumnos.Controllers
         {
             try
             {
+                //int edad = 18;
+                //string sql = @"
+                //    select a.id, a.Nombre, a.Apellidos, a.Edad, a.Sexo, a.FechaRegistr, c.Nombre as NombreCiudad 
+                //    from Alumno a
+                //    inner join Ciudad c on a.CodCiudad = c.id
+                //    where a.Edad > @edadAlumno"; //as Ciudad se pone NombreCiudad porque asi esta en Alumno.cs
+                
                 using (var db = new AlumnosContext())
                 {
-                    //List<Alumno> lista = db.Alumno.Where(a => a.Edad > 18).ToList();
-                    
-                    return View(db.Alumno.ToList());
+                    var data = from a in db.Alumno
+                               join c in db.Ciudad on a.CodCiudad equals c.id
+                               select new AlumnoCE()
+                               {
+                                   id = a.id,
+                                   Nombre = a.Nombre,
+                                   Apellidos = a.Apellidos,
+                                   Edad = a.Edad,
+                                   NombreCiudad = c.Nombre,
+                                   FechaRegistr = a.FechaRegistr
+                               };
+
+                    List<Alumno> lista = db.Alumno.Where(a => a.Edad > 18).ToList();
+
+                    return View(data.ToList());
+
+                    //return View(db.Database.SqlQuery<AlumnoCE>(sql, new SqlParameter("@edadAlumno", edad)).ToList());
                 }
             }
             catch (Exception)

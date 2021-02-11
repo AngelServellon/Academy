@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CRUD_Alumnos.Models.Alumno>
+﻿@model IEnumerable<CRUD_Alumnos.Models.AlumnoCE>
 
 @{
     ViewBag.Title = "Lista de Alumnos";
@@ -52,7 +52,7 @@
 
         </td>
         <td>
-            @CRUD_Alumnos.Controllers.AlumnoController.NombreCiudad(item.CodCiudad)
+            @item.NombreCiudad
         </td>
         <td>
             @item.FechaRegistr.ToShortDateString()
