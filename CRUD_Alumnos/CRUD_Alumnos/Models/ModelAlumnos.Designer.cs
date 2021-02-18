@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\ZBOX\Documents\Kodigo\ASP.Net2\CRUD_Alumnos\CRUD_Alumnos\CRUD_Alumnos\Models\ModelAlumnos.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\ZBOX\Documents\Kodigo\ASP.Net\CRUD_Alumnos\CRUD_Alumnos\CRUD_Alumnos\Models\ModelAlumnos.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

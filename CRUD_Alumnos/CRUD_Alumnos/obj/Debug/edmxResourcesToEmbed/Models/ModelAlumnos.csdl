@@ -2,10 +2,25 @@
 <Schema Namespace="AlumnosBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="AlumnosContext" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Alumno" EntityType="AlumnosBDModel.Alumno" />
+    <EntitySet Name="Calificacion" EntityType="AlumnosBDModel.Calificacion" />
     <EntitySet Name="Ciudad" EntityType="AlumnosBDModel.Ciudad" />
+    <EntitySet Name="Docente" EntityType="AlumnosBDModel.Docente" />
+    <EntitySet Name="Materia" EntityType="AlumnosBDModel.Materia" />
     <AssociationSet Name="FK_Alumno_Ciudad" Association="AlumnosBDModel.FK_Alumno_Ciudad">
       <End Role="Ciudad" EntitySet="Ciudad" />
       <End Role="Alumno" EntitySet="Alumno" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Calificacion_Alumno" Association="AlumnosBDModel.FK_Calificacion_Alumno">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="Calificacion" EntitySet="Calificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Calificacion_Materia" Association="AlumnosBDModel.FK_Calificacion_Materia">
+      <End Role="Materia" EntitySet="Materia" />
+      <End Role="Calificacion" EntitySet="Calificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Materia_Docente" Association="AlumnosBDModel.FK_Materia_Docente">
+      <End Role="Docente" EntitySet="Docente" />
+      <End Role="Materia" EntitySet="Materia" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Alumno">
@@ -20,6 +35,21 @@
     <Property Name="FechaRegistr" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="CodCiudad" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Ciudad" Relationship="AlumnosBDModel.FK_Alumno_Ciudad" FromRole="Alumno" ToRole="Ciudad" />
+    <NavigationProperty Name="Calificacion" Relationship="AlumnosBDModel.FK_Calificacion_Alumno" FromRole="Alumno" ToRole="Calificacion" />
+  </EntityType>
+  <EntityType Name="Calificacion">
+    <Key>
+      <PropertyRef Name="Id_Calificacion" />
+    </Key>
+    <Property Name="Id_Calificacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nota1" Type="Double" Nullable="false" />
+    <Property Name="Nota2" Type="Double" Nullable="false" />
+    <Property Name="Nota3" Type="Double" Nullable="false" />
+    <Property Name="Nota4" Type="Double" Nullable="false" />
+    <Property Name="id_alumno" Type="Int32" Nullable="false" />
+    <Property Name="id_materia" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Alumno" Relationship="AlumnosBDModel.FK_Calificacion_Alumno" FromRole="Calificacion" ToRole="Alumno" />
+    <NavigationProperty Name="Materia" Relationship="AlumnosBDModel.FK_Calificacion_Materia" FromRole="Calificacion" ToRole="Materia" />
   </EntityType>
   <EntityType Name="Ciudad">
     <Key>
@@ -28,6 +58,27 @@
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Alumno" Relationship="AlumnosBDModel.FK_Alumno_Ciudad" FromRole="Ciudad" ToRole="Alumno" />
+  </EntityType>
+  <EntityType Name="Docente">
+    <Key>
+      <PropertyRef Name="Id_Docente" />
+    </Key>
+    <Property Name="Id_Docente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombres" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Edad" Type="Int32" Nullable="false" />
+    <Property Name="Sexo" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Materia" Relationship="AlumnosBDModel.FK_Materia_Docente" FromRole="Docente" ToRole="Materia" />
+  </EntityType>
+  <EntityType Name="Materia">
+    <Key>
+      <PropertyRef Name="Id_Materia" />
+    </Key>
+    <Property Name="Id_Materia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="id_docente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Calificacion" Relationship="AlumnosBDModel.FK_Calificacion_Materia" FromRole="Materia" ToRole="Calificacion" />
+    <NavigationProperty Name="Docente" Relationship="AlumnosBDModel.FK_Materia_Docente" FromRole="Materia" ToRole="Docente" />
   </EntityType>
   <Association Name="FK_Alumno_Ciudad">
     <End Type="AlumnosBDModel.Ciudad" Role="Ciudad" Multiplicity="1" />
@@ -38,6 +89,42 @@
       </Principal>
       <Dependent Role="Alumno">
         <PropertyRef Name="CodCiudad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Calificacion_Alumno">
+    <End Type="AlumnosBDModel.Alumno" Role="Alumno" Multiplicity="1" />
+    <End Type="AlumnosBDModel.Calificacion" Role="Calificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Calificacion">
+        <PropertyRef Name="id_alumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Calificacion_Materia">
+    <End Type="AlumnosBDModel.Materia" Role="Materia" Multiplicity="1" />
+    <End Type="AlumnosBDModel.Calificacion" Role="Calificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materia">
+        <PropertyRef Name="Id_Materia" />
+      </Principal>
+      <Dependent Role="Calificacion">
+        <PropertyRef Name="id_materia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Materia_Docente">
+    <End Type="AlumnosBDModel.Docente" Role="Docente" Multiplicity="1" />
+    <End Type="AlumnosBDModel.Materia" Role="Materia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Docente">
+        <PropertyRef Name="Id_Docente" />
+      </Principal>
+      <Dependent Role="Materia">
+        <PropertyRef Name="id_docente" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

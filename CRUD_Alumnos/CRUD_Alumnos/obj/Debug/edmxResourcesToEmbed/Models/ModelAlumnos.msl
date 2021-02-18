@@ -14,11 +14,44 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Calificacion">
+      <EntityTypeMapping TypeName="AlumnosBDModel.Calificacion">
+        <MappingFragment StoreEntitySet="Calificacion">
+          <ScalarProperty Name="id_materia" ColumnName="id_materia" />
+          <ScalarProperty Name="id_alumno" ColumnName="id_alumno" />
+          <ScalarProperty Name="Nota4" ColumnName="Nota4" />
+          <ScalarProperty Name="Nota3" ColumnName="Nota3" />
+          <ScalarProperty Name="Nota2" ColumnName="Nota2" />
+          <ScalarProperty Name="Nota1" ColumnName="Nota1" />
+          <ScalarProperty Name="Id_Calificacion" ColumnName="Id_Calificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Ciudad">
       <EntityTypeMapping TypeName="AlumnosBDModel.Ciudad">
         <MappingFragment StoreEntitySet="Ciudad">
           <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Docente">
+      <EntityTypeMapping TypeName="AlumnosBDModel.Docente">
+        <MappingFragment StoreEntitySet="Docente">
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Edad" ColumnName="Edad" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+          <ScalarProperty Name="Id_Docente" ColumnName="Id_Docente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Materia">
+      <EntityTypeMapping TypeName="AlumnosBDModel.Materia">
+        <MappingFragment StoreEntitySet="Materia">
+          <ScalarProperty Name="id_docente" ColumnName="id_docente" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Id_Materia" ColumnName="Id_Materia" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
