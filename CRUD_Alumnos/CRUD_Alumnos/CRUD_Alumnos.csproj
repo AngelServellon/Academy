@@ -131,6 +131,7 @@
     <Compile Include="Controllers\AlumnoController.cs" />
     <Compile Include="Controllers\DocenteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MateriaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -151,6 +152,7 @@
     <Compile Include="Models\Materia.cs">
       <DependentUpon>ModelAlumnos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MateriaCE.cs" />
     <Compile Include="Models\ModelAlumnos.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -232,6 +234,11 @@
     <Content Include="Views\Docente\Agregardocente.cshtml" />
     <Content Include="Views\Docente\Editardocente.cshtml" />
     <Content Include="Views\Docente\Detallesdocente.cshtml" />
+    <Content Include="Views\Materia\Index.cshtml" />
+    <Content Include="Views\Materia\Agregarmateria.cshtml" />
+    <Content Include="Views\Materia\ListaDocentes.cshtml" />
+    <Content Include="Views\Materia\Editarmateria.cshtml" />
+    <Content Include="Views\Materia\Detallesmateria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

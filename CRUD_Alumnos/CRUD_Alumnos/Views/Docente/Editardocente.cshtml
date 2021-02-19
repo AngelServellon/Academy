@@ -1,11 +1,11 @@
 ﻿@model CRUD_Alumnos.Models.Docente
 
 @{
-    ViewBag.Title = "Editardocente";
+    ViewBag.Title = "Editar Docente";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Editardocente</h2>
+<h2>Editar Docente</h2>
 
 
 @using (Html.BeginForm())
@@ -47,8 +47,8 @@
             <div class="col-md-10">
                 <div class="col-md-10">
                     <select class="form-control" id="Sexo" name="Sexo">
-                        <option value="F">Femenino</option>
-                        <option value="M">Masculino</option>
+                        <option value="F" @(Model.Sexo == "F" ? "selected": " ")>Femenino</option>
+                        <option value="M" @(Model.Sexo == "M" ? "selected": " ")>Masculino</option>
                     </select>
                 </div>
             </div>
@@ -56,14 +56,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Guardar" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Regresar", "Index")
 </div>
 
 @section Scripts {

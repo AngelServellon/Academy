@@ -1,11 +1,11 @@
 ﻿@model CRUD_Alumnos.Models.Docente
 
 @{
-    ViewBag.Title = "Detallesdocente";
+    ViewBag.Title = "Detalles del Docente";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Detallesdocente</h2>
+<h2>Detalles Docente</h2>
 
 <div>
     <h4>Docente</h4>
@@ -32,7 +32,16 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Sexo)
+            @{
+                if (Model.Sexo == "M")
+                {
+                    <span>Masculino</span>
+                }
+                else
+                {
+                    <span>Femenino</span>
+                }
+            }
         </dd>
 
     </dl>

@@ -1,0 +1,35 @@
+﻿@model CRUD_Alumnos.Models.Materia
+
+@{
+    ViewBag.Title = "Detallesmateria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detallesmateria</h2>
+
+<div>
+    <h4>Materia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            Docente
+        </dt>
+
+        <dd>
+            @CRUD_Alumnos.Controllers.MateriaController.NombreDocente(Model.id_docente)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editarmateria", new { id = Model.Id_Materia }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>
