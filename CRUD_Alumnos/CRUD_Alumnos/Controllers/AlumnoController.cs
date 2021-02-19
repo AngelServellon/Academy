@@ -160,6 +160,7 @@ namespace CRUD_Alumnos.Controllers
 
             }
         }
+        //Para que aprezca el nombre de la ciudad en la vista Index
         public static string NombreCiudad(int CodCiudad)
         {
             using (var db = new AlumnosContext())
