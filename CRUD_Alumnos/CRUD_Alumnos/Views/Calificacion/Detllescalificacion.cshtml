@@ -1,0 +1,68 @@
+﻿@model CRUD_Alumnos.Models.Calificacion
+
+@{
+    ViewBag.Title = "Detlles Calificacion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detlles Calificacion</h2>
+
+<div>
+    <h4>Calificacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Alumno/a
+        </dt>
+
+        <dd>
+            @CRUD_Alumnos.Controllers.CalificacionController.NombreAlumno(Model.id_alumno)
+        </dd>
+
+        <dt>
+            Materia
+        </dt>
+
+        <dd>
+            @CRUD_Alumnos.Controllers.CalificacionController.NombreMateria(Model.id_materia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nota1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nota1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nota2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nota2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nota3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nota3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nota4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nota4)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Editarcalificacion", new { id = Model.Id_Calificacion }) |
+    @Html.ActionLink("Regresar", "Index")
+</p>

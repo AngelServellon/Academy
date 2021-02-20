@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlumnoController.cs" />
+    <Compile Include="Controllers\CalificacionController.cs" />
     <Compile Include="Controllers\DocenteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MateriaController.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="Models\Calificacion.cs">
       <DependentUpon>ModelAlumnos.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CalificacionCE.cs" />
     <Compile Include="Models\Ciudad.cs">
       <DependentUpon>ModelAlumnos.tt</DependentUpon>
     </Compile>
@@ -239,6 +241,12 @@
     <Content Include="Views\Materia\ListaDocentes.cshtml" />
     <Content Include="Views\Materia\Editarmateria.cshtml" />
     <Content Include="Views\Materia\Detallesmateria.cshtml" />
+    <Content Include="Views\Calificacion\Index.cshtml" />
+    <Content Include="Views\Calificacion\Agregarcalificacion.cshtml" />
+    <Content Include="Views\Calificacion\ListarAlumnos.cshtml" />
+    <Content Include="Views\Calificacion\ListarMaterias.cshtml" />
+    <Content Include="Views\Calificacion\Editarcalificacion.cshtml" />
+    <Content Include="Views\Calificacion\Detllescalificacion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
