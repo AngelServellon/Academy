@@ -247,6 +247,7 @@
     <Content Include="Views\Calificacion\ListarMaterias.cshtml" />
     <Content Include="Views\Calificacion\Editarcalificacion.cshtml" />
     <Content Include="Views\Calificacion\Detllescalificacion.cshtml" />
+    <Content Include="Views\Alumno\MateriaAlumno.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
