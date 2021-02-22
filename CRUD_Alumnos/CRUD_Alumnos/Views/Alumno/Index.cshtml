@@ -6,68 +6,77 @@
 }
 
 <h2>Lista de alumnos</h2>
-
+<br />
 <p>
-    @Html.ActionLink("Crear Nuevo", "Agregar")
+    <button type="button" class="btn btn-warning">@Html.ActionLink("Crear Nuevo", "Agregar", "", new { @class = "boton" })</button>                     
+    <button type="button" class="btn btn-primary mostrar">@Html.ActionLink("Materias y notas de cada alumno/a", "MateriaAlumno", "", new { @class = "boton" })</button>
 </p>
-<table class="table table-striped table-bordered table-hover">
-    <tr>
-        <th>
-            Nombre Completo
-        </th>
-        <th>
-            Edad
-        </th>
-        <th>
-            Sexo
-        </th>
-        <th>
-            Ciudad
-        </th>
-        <th>
-            Fecha Alta
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreCompleto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Edad)
-        </td>
-        <td>
-            @{
-                if (item.Sexo == "M")
-                {
-                    <span>Masculino</span>
-                }
-                else
-                {
-                    <span>Femenino</span> 
-                }
-            }
+<table class="table-responsive">
+    <thead>
+        <tr>
+            <th>
+                Nombre Completo
+            </th>
+            <th>
+                Edad
+            </th>
+            <th>
+                Sexo
+            </th>
+            <th>
+                Ciudad
+            </th>
+            <th>
+                Fecha Alta
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edad)
+                </td>
+                <td>
+                    @{
+                        if (item.Sexo == "M")
+                        {
+                            <span>Masculino</span>
+                        }
+                        else
+                        {
+                            <span>Femenino</span>
+                        }
+                    }
 
-        </td>
-        <td>
-            @item.NombreCiudad
-        </td>
-        <td>
-            @item.FechaRegistr.ToShortDateString()
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Editar", new { id=item.id }) |
-            @Html.ActionLink("Detalles", "Detallesalumno", new { id=item.id }) |
-            @Html.ActionLink("Eliminar", "EliminarAlumno", new { id=item.id }, new { @class= "aElimina"})
-        </td>
-    </tr>
-}
+                </td>
+                <td>
+                    @item.NombreCiudad
+                </td>
+                <td>
+                    @item.FechaRegistr.ToShortDateString()
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary">@Html.ActionLink("Editar", "Editar", new { id = item.id }, new { @class = "boton"})</button>
+                    <button type="button" class="btn btn-success">@Html.ActionLink("Detalles", "Detallesalumno", new { id = item.id }, new { @class = "boton" })</button>
+                    <button type="button" class="btn btn-danger">@Html.ActionLink("Eliminar", "EliminarAlumno", new { id = item.id }, new { @class = "aElimina" })</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+
 
 </table>
+<br />  
 <p>
-    @Html.ActionLink("Materias y notas de cada alumno/a", "MateriaAlumno", new { @class = "btn btn-info" })
+    
 </p>
 
 

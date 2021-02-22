@@ -6,37 +6,42 @@
 }
 
 <h2>Materias</h2>
-
+<br />
 <p>
-    @Html.ActionLink("Crear Nuevo", "Agregarmateria")
+    <button type="button" class="btn btn-warning">@Html.ActionLink("Crear Nuevo", "Agregarmateria", "", new { @class = "boton" })</button>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            Materia
-        </th>
-        <th>
-            Docente
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="table-responsive">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Docente.NombreCompleto)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Editarmateria", new { id = item.Id_Materia }) |
-                @Html.ActionLink("Detalles", "Detallesmateria", new { id = item.Id_Materia }) |
-                @Html.ActionLink("Eliminar", "Eliminarmateria", new { id = item.Id_Materia }, new { @class = "aElimina" })
-            </td>
+            <th>
+                Materia
+            </th>
+            <th>
+                Docente
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Docente.NombreCompleto)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary">@Html.ActionLink("Editar", "Editarmateria", new { id = item.Id_Materia }, new { @class = "boton" })</button>
+                    <button type="button" class="btn btn-success">@Html.ActionLink("Detalles", "Detallesmateria", new { id = item.Id_Materia }, new { @class = "boton" })</button>
+                    <button type="button" class="btn btn-danger">@Html.ActionLink("Eliminar", "Eliminarmateria", new { id = item.Id_Materia }, new { @class = "aElimina" })</button>
+</td>
+            </tr>
+        }
+    </tbody>
+    
 
 </table>
 

@@ -1,0 +1,44 @@
+﻿html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(45deg, #2193b0, #6dd5ed);
+    font-family: sans-serif;
+    font-weight: 100;
+    color:white;
+}
+
+
+table {
+    width: 100%;
+}
+
+th,
+td {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+th {
+    text-align: left;
+}
+
+thead th {
+    background-color: #55608f;
+}
+
+a.boton, a.aElimina {
+    color: white;
+}
+
+button.mostrar{
+    margin-left: 30px;
+}
+
+a.regresar {
+    color: black;
+}

@@ -19,7 +19,7 @@
         @Html.HiddenFor(model => model.Id_Calificacion)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.id_alumno, "id_alumno", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.id_alumno, "Alumno/a", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.Action("ListarAlumnos")
                 @Html.ValidationMessageFor(model => model.id_alumno, "", new { @class = "text-danger" })
@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.id_materia, "id_materia", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.id_materia, "Materia", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.Action("ListarMaterias")
                 @Html.ValidationMessageFor(model => model.id_materia, "", new { @class = "text-danger" })
@@ -36,7 +36,7 @@
         
         <div class="form-group">
             @Html.LabelFor(model => model.Nota1, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-2">
                 @Html.EditorFor(model => model.Nota1, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nota1, "", new { @class = "text-danger" })
             </div>
@@ -44,7 +44,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Nota2, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-2">
                 @Html.EditorFor(model => model.Nota2, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nota2, "", new { @class = "text-danger" })
             </div>
@@ -52,7 +52,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Nota3, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-2">
                 @Html.EditorFor(model => model.Nota3, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nota3, "", new { @class = "text-danger" })
             </div>
@@ -60,7 +60,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Nota4, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-2">
                 @Html.EditorFor(model => model.Nota4, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nota4, "", new { @class = "text-danger" })
             </div>
@@ -68,14 +68,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-default" />
+                <input type="submit" value="Guardar" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Regresar", "Index")
+    <button type="button" class="btn btn-warning">@Html.ActionLink("Regresar", "Index", "", new { @class = "regresar" })</button>
 </div>
 
 @section Scripts {

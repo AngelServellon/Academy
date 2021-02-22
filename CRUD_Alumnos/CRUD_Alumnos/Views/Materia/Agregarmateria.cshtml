@@ -28,21 +28,21 @@
         <div class="form-group">
             @Html.LabelFor(model => model.id_docente, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.Action("ListaDocentes");
+                @Html.Action("ListaDocentes")
                 @Html.ValidationMessageFor(model => model.id_docente, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Crear" class="btn btn-default" />
+                <input type="submit" value="Crear" class="btn btn-success" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Regresar", "Index")
+    <button type="button" class="btn btn-warning">@Html.ActionLink("Regresar", "Index", "", new { @class = "regresar" })</button>
 </div>
 
 @section Scripts {

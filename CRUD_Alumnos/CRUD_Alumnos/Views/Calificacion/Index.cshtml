@@ -6,61 +6,66 @@
 }
 
 <h2>Calificaciones</h2>
-
+<br />
 <p>
-    @Html.ActionLink("Crear Nuevo", "Agregarcalificacion")
+    <button type="button" class="btn btn-warning">@Html.ActionLink("Crear Nuevo", "Agregarcalificacion", "", new { @class = "boton" })</button>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            Alumno/a
-        </th>
-        <th>
-            Materia
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nota1)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nota2)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nota3)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nota4)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="table-responsive">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Alumno.NombreCompleto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Materia.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nota1)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nota2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nota3)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nota4)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Editarcalificacion", new { id = item.Id_Calificacion }) |
-                @Html.ActionLink("Detalles", "Detllescalificacion", new { id = item.Id_Calificacion }) |
-                @Html.ActionLink("Eliminar", "Eliminarcalificacion", new { id = item.Id_Calificacion }, new { @class = "aElimina" })
-            </td>
+            <th>
+                Alumno/a
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nota1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nota2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nota3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nota4)
+            </th>
+            <th>
+                Materia
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Alumno.NombreCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nota1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nota2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nota3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nota4)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Materia.Nombre)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary">@Html.ActionLink("Editar", "Editarcalificacion", new { id = item.Id_Calificacion }, new { @class = "boton" })</button>
+                    <button type="button" class="btn btn-success">@Html.ActionLink("Detalles", "Detllescalificacion", new { id = item.Id_Calificacion }, new { @class = "boton" })</button>
+                    <button type="button" class="btn btn-danger">@Html.ActionLink("Eliminar", "Eliminarcalificacion", new { id = item.Id_Calificacion }, new { @class = "aElimina" })</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+    
 
 </table>
 @section scripts{

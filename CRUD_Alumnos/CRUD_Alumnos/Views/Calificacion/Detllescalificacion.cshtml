@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Detlles Calificacion</h2>
+<h2>Detalles Calificacion</h2>
 
 <div>
     <h4>Calificacion</h4>
@@ -63,6 +63,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Editarcalificacion", new { id = Model.Id_Calificacion }) |
-    @Html.ActionLink("Regresar", "Index")
+    <button type="button" class="btn btn-primary">@Html.ActionLink("Editar", "Editarcalificacion", new { id = Model.Id_Calificacion }, new { @class = "boton" })</button> | 
+    <button type="button" class="btn btn-warning">@Html.ActionLink("Regresar", "Index", "", new { @class = "regresar" })</button>
 </p>

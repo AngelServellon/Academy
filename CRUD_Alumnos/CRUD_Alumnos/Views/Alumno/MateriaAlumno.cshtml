@@ -7,52 +7,59 @@
 
 <h2>MateriaAlumno</h2>
 <br /> 
-<table class="table">
-    <tr>
-        <th>
-            Alumno
-        </th>
-        <th>
-            Materia
-        </th>
-        <th>
-            Nota1
-        </th>
-        <th>
-            Nota2
-        </th>
-        <th>
-            Nota3
-        </th>
-        <th>
-            Nota4
-        </th>
-    </tr>
+<table class="table-responsive">
+    <thead>
+        <tr>
+            <th>
+                Alumno
+            </th>
+            <th>
+                Materia
+            </th>
+            <th>
+                Nota1
+            </th>
+            <th>
+                Nota2
+            </th>
+            <th>
+                Nota3
+            </th>
+            <th>
+                Nota4
+            </th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreCompleto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Asignatura)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nota1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nota2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nota3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nota4)
+                </td>
+            </tr>
+        }
+    </tbody>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreCompleto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Asignatura)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nota1)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nota2)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nota3)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nota4)
-        </td>
-    </tr>
-}
 
 </table>
+<br />
 <p>
-    @Html.ActionLink("Regresar", "Index")
+    <button type="button" class="btn btn-warning">@Html.ActionLink("Regresar", "Index", "", new { @class = "regresar" })</button>
 </p>
