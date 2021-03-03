@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -33,7 +34,9 @@ namespace CRUD_Alumnos.Models
     [MetadataType(typeof(AlumnoCE))]
     public partial class Alumno
     {
+        [JsonIgnore]
         public string NombreCompleto { get { return Nombre + " " + Apellidos; } }
+        [JsonIgnore]
         public string NombreCiudad { get; set; }
     }
 }
