@@ -9,6 +9,7 @@
 
 namespace CRUD_Alumnos.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
@@ -25,7 +26,9 @@ namespace CRUD_Alumnos.Models
         public int id_docente { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<Calificacion> Calificacion { get; set; }
+        [JsonIgnore]
         public virtual Docente Docente { get; set; }
     }
 }

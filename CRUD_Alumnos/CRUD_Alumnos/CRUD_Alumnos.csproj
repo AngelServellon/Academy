@@ -141,6 +141,7 @@
     <Compile Include="Controllers\AlumnoController.cs" />
     <Compile Include="Controllers\APIAlumnoController.cs" />
     <Compile Include="Controllers\APIDocenteController.cs" />
+    <Compile Include="Controllers\APIMateriaController.cs" />
     <Compile Include="Controllers\CalificacionController.cs" />
     <Compile Include="Controllers\DocenteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

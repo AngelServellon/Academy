@@ -1,6 +1,7 @@
 ﻿using CRUD_Alumnos.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -44,8 +45,47 @@ namespace CRUD_Alumnos.Controllers
                 return BadRequest();
             }
         }
+        //Editar un registro
+        [HttpPut]
+        public IHttpActionResult ActualizarAlumno (int id, [FromBody]Alumno alu)
+        {
+            if (ModelState.IsValid)
+            {
+                var AlumnoExiste = dbContext.Alumno.Count(c => c.id == id) > 0;
+                if (AlumnoExiste)
+                {
+                    dbContext.Entry(alu).State = EntityState.Modified;
+                    dbContext.SaveChanges();
 
-        
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+        //Borrar un registro
+        [HttpDelete]
+        public IHttpActionResult ELiminarAlumno(int id)
+        {
+            var alu = dbContext.Alumno.Find(id);
+            if (alu != null)
+            {
+                dbContext.Alumno.Remove(alu);
+                dbContext.SaveChanges();
+
+                return Ok(alu);
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
 
     }
 }
